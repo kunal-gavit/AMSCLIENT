@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --shadow-premium: 0 16px 35px -16px rgba(10, 42, 102, 0.28);
+    --shadow-glass: 0 8px 24px 0 rgba(30, 58, 138, 0.12);
+    --primary-gradient: linear-gradient(135deg, #0A2A66 0%, #1E3A8A 70%, #3254B2 100%);
+  }
+  body {
+    @apply bg-background text-slate-900 font-sans selection:bg-primary selection:text-white;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.08) 0, transparent 55%),
+      radial-gradient(at 100% 0%, rgba(10, 42, 102, 0.06) 0, transparent 55%),
+      linear-gradient(#f9fafb, #f9fafb);
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen bg-gray-50 text-gray-900;
+  }
+
+  .dashboard-grid {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4;
+  }
+
+  .navbar-academic {
+    @apply h-[60px] bg-primary text-white shadow-md px-4 md:px-6 flex items-center justify-between;
+  }
+
+  .navbar-title {
+    @apply text-sm md:text-base font-bold tracking-wide;
+  }
+
+  .card-academic {
+    @apply bg-white rounded-xl shadow-md p-5 transition-transform duration-200 hover:scale-[1.01];
+  }
+
+  .card-status-primary {
+    @apply border-t-4 border-primary;
+  }
+
+  .card-status-safe {
+    @apply border-t-4 border-success;
+  }
+
+  .card-status-warning {
+    @apply border-t-4 border-warning;
+  }
+
+  .card-status-risk {
+    @apply border-t-4 border-danger;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white font-semibold transition-colors duration-200 hover:bg-primary-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-primary text-primary font-semibold transition-colors duration-200 hover:bg-primary/10;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-danger text-white font-semibold transition-colors duration-200 hover:bg-red-700;
+  }
+
+  .badge-safe {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-success text-white;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-warning text-gray-900;
+  }
+
+  .badge-risk {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold bg-danger text-white;
+  }
+
+  .table-academic {
+    @apply w-full overflow-hidden rounded-xl bg-white shadow-md;
+  }
+
+  .table-academic table {
+    @apply w-full border-collapse;
+  }
+
+  .table-academic th {
+    @apply text-left text-xs uppercase tracking-wide font-bold text-gray-500 bg-slate-100 px-4 py-3;
+  }
+
+  .table-academic td {
+    @apply px-4 py-3 text-sm text-gray-900;
+  }
+
+  .table-academic tbody tr:nth-child(even) {
+    @apply bg-slate-50;
+  }
+
+  .table-academic tbody tr {
+    @apply transition-colors duration-150 hover:bg-blue-50;
+  }
+
+  .form-label {
+    @apply block mb-2 text-sm font-semibold text-gray-900;
+  }
+
+  .input-academic {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary;
+  }
+
+  .btn-nexus {
+    @apply relative px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-500 overflow-hidden flex items-center justify-center gap-3 active:scale-95;
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 10px 20px -5px rgba(124, 58, 237, 0.4);
+  }
+
+  .btn-nexus::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(rgba(255,255,255,0.2), transparent);
+  }
+
+  .btn-nexus:hover::after {
+    @apply opacity-100;
+  }
+
+  .btn-nexus:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px -14px rgba(10, 42, 102, 0.5);
+  }
+
+  .input-nexus {
+    @apply w-full px-6 py-5 bg-slate-50 border-2 border-transparent rounded-[1.5rem] font-bold text-slate-800 transition-all duration-300 focus:outline-none focus:border-primary/20 focus:bg-white focus:ring-4 focus:ring-primary/5 placeholder:text-slate-300;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-3xl border border-white/40;
+    box-shadow: var(--shadow-glass);
+  }
+
+  .card-premium {
+    @apply bg-white rounded-[2.5rem] border border-slate-100/50 transition-all duration-700 relative overflow-hidden;
+    box-shadow: var(--shadow-premium);
+  }
+  
+  .card-premium::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 opacity-0 transition-opacity duration-700;
+  }
+
+  .card-premium:hover::before {
+    @apply opacity-100;
+  }
+
+  .card-premium:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.08);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+
+  .glow-success {
+    @apply shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)];
+  }
+
+  .glow-danger {
+    @apply shadow-[0_0_20px_-5px_rgba(239,68,68,0.5)];
+  }
+}
+
+/* Premium Animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-primary/20 transition-all;
+}
+
+@layer utilities {
+  .shadow-premium {
+    box-shadow: var(--shadow-premium);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
